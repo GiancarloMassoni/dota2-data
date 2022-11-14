@@ -1,0 +1,37 @@
+.background-color {
+  background-color: #161d24;
+}
+
+h1 {
+  color: white;
+  font-family: Cinzel, sans-serif;
+}
+
+h3 {
+  color: white;
+  font-family: Martel, sans-serif;
+}
+
+.text-center {
+  text-align: center;
+}
+
+button {
+  background-color: #161d24;
+  border: #161d24;
+  margin: 20px;
+  color: white;
+  font-family: Martel, sans-serif;
+  padding: 5px;
+  width: 60px;
+  height: 30px;
+}
+
+input {
+  padding: 5px;
+  border: 2px solid;
+}
+
+button:hover {
+  cursor: pointer;
+}

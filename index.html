@@ -8,11 +8,42 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Martel:wght@300&display=swap"
+    rel="stylesheet">
 </head>
-<body>
-  <header>
+<body class="background-img positioned">
+  <div class="overlay positioned"></div>
+  <header class="background-color">
+    <div class="container">
+      <div class="row">
+        <div class="column-full">
+          <h1>Dota 2 Data</h1>
+        </div>
+      </div>
+    </div>
   </header>
-  <main>
+  <main class="container positioned">
+    <div class="view" data-view="home">
+      <form class="id-enter">
+        <div class="row text-center">
+          <div class="column-full">
+            <h3>Enter Steam 32 ID to obtain Dota 2 player stats</h3>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="column-full">
+            <input type="text" name="steamid" required placeholder="Steam ID">
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="column-full">
+            <button>Enter</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

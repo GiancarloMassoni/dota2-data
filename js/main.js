@@ -36,10 +36,35 @@ function getSteamProfile(id) {
   xhr.send();
 }
 
+function getWinLosses(id) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://api.opendota.com/api/players/' + id + '/wl');
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+
+    var $winsRow = document.querySelector('.wins-row');
+    $winsRow.textContent = 'All Time Wins: ' + xhr.response.win;
+
+    var $lossesRow = document.querySelector('.losses-row');
+    $lossesRow.textContent = 'All Time Losses: ' + xhr.response.lose;
+
+    var wins = parseInt(xhr.response.win);
+    var losses = parseInt(xhr.response.lose);
+    var totalGames = (wins + losses);
+    var winPercent = wins / totalGames;
+
+    var $winPercentRow = document.querySelector('.win-percentage-row');
+    $winPercentRow.textContent = 'Win Percentage: ' + winPercent.toFixed(2) * 100 + '%';
+
+  });
+  xhr.send();
+}
+
 function idSubmit(event) {
   event.preventDefault();
   data.id = $form.elements.steamid.value;
   getSteamProfile(data.id);
+  getWinLosses(data.id);
   $homeView.className = 'home-view hidden';
   $profileView.className = 'profile-view';
   data.view = 'profile';

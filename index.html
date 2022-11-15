@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Martel:wght@300&display=swap"
-    rel="stylesheet">
+  rel="stylesheet">
 </head>
 <body class="background-img positioned">
   <div class="overlay positioned"></div>
@@ -19,13 +19,14 @@
     <div class="container">
       <div class="row">
         <div class="column-full">
-          <h1>Dota 2 Data</h1>
+          <h1 class="inline padding-top">Dota 2 Data</h1>
+          <a href="#" class="profile inline padding-top">Profile</a>
         </div>
       </div>
     </div>
   </header>
   <main class="container positioned">
-    <div class="view" data-view="home">
+    <div class="home-view" data-view="home">
       <form class="id-enter">
         <div class="row text-center">
           <div class="column-full">
@@ -43,6 +44,37 @@
           </div>
         </div>
       </form>
+    </div>
+    <div class="profile-view hidden" data-view="profile">
+      <div class="row text-center padding">
+        <div class="column-half">
+          <img src="" alt="" class="profile-img">
+        </div>
+        <div class="column-half">
+          <table class="table-profile">
+            <tr> <td class="profile-table-row1"></td> </tr>
+            <tr>
+              <td class="profile-table-row2"></td>
+            </tr>
+            <tr>
+              <td class="profile-table-row3"></td>
+            </tr>
+            <tr>
+              <td class="profile-table-row4"></td>
+            </tr>
+            <tr>
+              <td class="profile-table-row5"></td>
+            </tr>
+            <tr>
+              <td class="profile-table-row6"></td>
+            </tr>
+            <tr>
+              <td class="profile-table-row7"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
     </div>
   </main>
   <script src="js/data.js"></script>

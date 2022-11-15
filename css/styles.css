@@ -78,3 +78,7 @@ button:hover {
 img {
   padding: 10px;
 }
+
+.dota-data:hover {
+  cursor: pointer;
+}

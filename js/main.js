@@ -2,8 +2,10 @@ var $form = document.querySelector('form');
 var $profile = document.querySelector('.profile');
 var $homeView = document.querySelector('.home-view');
 var $profileView = document.querySelector('.profile-view');
+var $dotaData = document.querySelector('.dota-data');
 
-$profile.addEventListener('click', swapView);
+$dotaData.addEventListener('click', swapHomeView);
+$profile.addEventListener('click', swapProfileView);
 $form.addEventListener('submit', idSubmit);
 
 function getSteamProfile(id) {
@@ -25,12 +27,9 @@ function getSteamProfile(id) {
     var $rowRank = document.querySelector('.rank-row');
     $rowRank.textContent = 'Rank: ' + xhr.response.rank_tier;
 
-    var $rowProfileLink = document.querySelector('.profile-link-row');
-
-    var $a = document.createElement('a');
-    $a.setAttribute('href', xhr.response.profile.profileurl);
-    $a.textContent = 'Link to Steam Profile';
-    $rowProfileLink.appendChild($a);
+    var $profileLink = document.querySelector('.profile-link');
+    $profileLink.setAttribute('href', xhr.response.profile.profileurl);
+    $profileLink.textContent = 'Link to Steam Profile';
 
   });
 
@@ -47,6 +46,14 @@ function idSubmit(event) {
 
 }
 
-function swapView(event) {
+function swapHomeView(event) {
+  $homeView.className = 'home-view';
+  $profileView.className = 'profile-view hidden';
+  data.view = 'home';
+}
 
+function swapProfileView(event) {
+  $homeView.className = 'home-view hidden';
+  $profileView.className = 'profile-view';
+  data.view = 'profile';
 }

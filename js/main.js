@@ -91,9 +91,11 @@ function getMatches(id) {
   xhr.open('GET', 'https://api.opendota.com/api/players/' + id + '/recentMatches');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
+    var $table = document.querySelector('.table-matches');
 
     for (var i = 0; i < xhr.response.length; i++) {
-      newMatchRow(xhr.response[i]);
+      var $newMatchRow = newMatchRow(xhr.response[i]);
+      $table.appendChild($newMatchRow);
     }
   });
 
@@ -102,11 +104,8 @@ function getMatches(id) {
 
 function newMatchRow(matchObject) {
 
-  var $table = document.querySelector('.table-matches');
-
   var $tableRow = document.createElement('tr');
   $tableRow.className = 'matches-row';
-  $table.appendChild($tableRow);
 
   var $heroImgCol = document.createElement('td');
   $tableRow.appendChild($heroImgCol);
@@ -158,7 +157,7 @@ function newMatchRow(matchObject) {
   var $kdaCol = document.createElement('td');
   $kdaCol.textContent = matchObject.kills + '/' + matchObject.deaths + '/' + matchObject.assists;
   $tableRow.appendChild($kdaCol);
-
+  return $tableRow;
 }
 
 function swapHomeView(event) {

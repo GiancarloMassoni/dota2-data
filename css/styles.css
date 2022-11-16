@@ -63,6 +63,7 @@ button:hover {
   font-size: 20px;
   font-family: Cinzel, sans-serif;
   border: 2px solid #353f49;
+  margin-bottom: 40px;
 }
 
 .table-profile td {
@@ -74,11 +75,11 @@ button:hover {
 }
 
 .table-matches {
-  padding: 10px;
+  padding: 10;
 }
 
 .table-matches tr {
-  height: 40px;
+  height: 30px;
 }
 
 .table-matches tr:nth-child(even) {
@@ -95,4 +96,12 @@ img {
 
 .dota-data:hover {
   cursor: pointer;
+}
+
+tr img {
+  height: 60px;
+  width: 100%;
+  margin: 1px;
+  padding: 0;
+  display: block;
 }

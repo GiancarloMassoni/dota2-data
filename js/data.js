@@ -1,5 +1,6 @@
 /* exported data */
 window.addEventListener('beforeunload', saveToLocalStorage);
+
 var data = {
   view: 'home',
   id: null
@@ -14,4 +15,5 @@ if (previousDataJSON !== null) {
 function saveToLocalStorage(event) {
   var dataJSON = JSON.stringify(data);
   localStorage.setItem('steam-ids', dataJSON);
+
 }

@@ -3,7 +3,7 @@
 }
 
 a {
-  font-size: 20px;
+  font-size: 18px;
   text-decoration: none;
 }
 
@@ -51,16 +51,19 @@ button:hover {
   cursor: pointer;
 }
 
-.table-profile {
-  text-align: left;
+.table-profile,
+.table-matches {
   color: white;
+  padding-left: 10px;
   margin-left: auto;
   margin-right: auto;
   background-color: #161d24;
-  width: 450px;
+  width: 100%;
   margin-top: 10px;
   font-size: 20px;
   font-family: Cinzel, sans-serif;
+  border: 2px solid #353f49;
+  margin-bottom: 40px;
 }
 
 .table-profile td {
@@ -68,6 +71,18 @@ button:hover {
 }
 
 .table-profile :nth-child(even) {
+  background-color: #353f49;
+}
+
+.table-matches {
+  padding: 10;
+}
+
+.table-matches tr {
+  height: 30px;
+}
+
+.table-matches tr:nth-child(even) {
   background-color: #353f49;
 }
 
@@ -81,4 +96,12 @@ img {
 
 .dota-data:hover {
   cursor: pointer;
+}
+
+tr img {
+  height: 60px;
+  width: 100%;
+  margin: 1px;
+  padding: 0;
+  display: block;
 }

@@ -92,68 +92,73 @@ function getMatches(id) {
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
 
-    var $table = document.querySelector('.table-matches');
-
     for (var i = 0; i < xhr.response.length; i++) {
-
-      var $tableRow = document.createElement('tr');
-      $tableRow.className = 'matches-row';
-      $table.appendChild($tableRow);
-
-      var $heroImgCol = document.createElement('td');
-      $tableRow.appendChild($heroImgCol);
-
-      var $heroImg = document.createElement('img');
-
-      var $heroCol = document.createElement('td');
-
-      for (var x = 0; x < heroData.length; x++) {
-        if (heroData[x].id === xhr.response[i].hero_id) {
-          $heroImg.setAttribute('src', heroData[x].image);
-          $heroCol.textContent = heroData[x].name_loc;
-          break;
-        }
-      }
-      $heroImgCol.appendChild($heroImg);
-
-      $tableRow.appendChild($heroCol);
-
-      var $resultCol = document.createElement('td');
-      if (xhr.response[i].radiant_win === true) {
-        $resultCol.textContent = 'Radiant Victory';
-      } else {
-        $resultCol.textContent = 'Dire Victory';
-      }
-      $tableRow.appendChild($resultCol);
-
-      var $typeCol = document.createElement('td');
-      if (xhr.response[i].game_mode === 22) {
-        $typeCol.textContent = 'All Pick';
-      } else {
-        $typeCol.textContent = 'Custom Game';
-      }
-      $tableRow.appendChild($typeCol);
-
-      var $durationCol = document.createElement('td');
-      var duration = xhr.response[i].duration / 60;
-      var difference = duration - Math.floor(duration);
-      var seconds = 60 * difference;
-      var secondsFixed = seconds.toFixed(0);
-      if (secondsFixed.toString().length === 1) {
-        $durationCol.textContent = Math.floor(duration) + ':0' + secondsFixed;
-
-      } else {
-        $durationCol.textContent = Math.floor(duration) + ':' + secondsFixed;
-      }
-      $tableRow.appendChild($durationCol);
-
-      var $kdaCol = document.createElement('td');
-      $kdaCol.textContent = xhr.response[i].kills + '/' + xhr.response[i].deaths + '/' + xhr.response[i].assists;
-      $tableRow.appendChild($kdaCol);
-
+      newMatchRow(xhr.response[i]);
     }
   });
+
   xhr.send();
+}
+
+function newMatchRow(matchObject) {
+
+  var $table = document.querySelector('.table-matches');
+
+  var $tableRow = document.createElement('tr');
+  $tableRow.className = 'matches-row';
+  $table.appendChild($tableRow);
+
+  var $heroImgCol = document.createElement('td');
+  $tableRow.appendChild($heroImgCol);
+
+  var $heroImg = document.createElement('img');
+
+  var $heroCol = document.createElement('td');
+
+  for (var x = 0; x < heroData.length; x++) {
+    if (heroData[x].id === matchObject.hero_id) {
+      $heroImg.setAttribute('src', heroData[x].image);
+      $heroCol.textContent = heroData[x].name_loc;
+      break;
+    }
+  }
+  $heroImgCol.appendChild($heroImg);
+
+  $tableRow.appendChild($heroCol);
+
+  var $resultCol = document.createElement('td');
+  if (matchObject.radiant_win === true) {
+    $resultCol.textContent = 'Radiant Victory';
+  } else {
+    $resultCol.textContent = 'Dire Victory';
+  }
+  $tableRow.appendChild($resultCol);
+
+  var $typeCol = document.createElement('td');
+  if (matchObject.game_mode === 22) {
+    $typeCol.textContent = 'All Pick';
+  } else {
+    $typeCol.textContent = 'Custom Game';
+  }
+  $tableRow.appendChild($typeCol);
+
+  var $durationCol = document.createElement('td');
+  var duration = matchObject.duration / 60;
+  var difference = duration - Math.floor(duration);
+  var seconds = 60 * difference;
+  var secondsFixed = seconds.toFixed(0);
+  if (secondsFixed.toString().length === 1) {
+    $durationCol.textContent = Math.floor(duration) + ':0' + secondsFixed;
+
+  } else {
+    $durationCol.textContent = Math.floor(duration) + ':' + secondsFixed;
+  }
+  $tableRow.appendChild($durationCol);
+
+  var $kdaCol = document.createElement('td');
+  $kdaCol.textContent = matchObject.kills + '/' + matchObject.deaths + '/' + matchObject.assists;
+  $tableRow.appendChild($kdaCol);
+
 }
 
 function swapHomeView(event) {

@@ -27,8 +27,8 @@
 
 .background-img {
   background-image: url("../images/dota2.jpeg");
-  background-size: 100% 1000px;
-  background-repeat: no-repeat;
+  object-fit: contain;
+  background-size: 100% 1400px;
 }
 
 body {
@@ -54,10 +54,9 @@ main {
 }
 
 @media screen and (max-width: 768px) {
-  .container {
+  main {
     max-width: 575px;
     margin: 0 auto;
-    padding: 0 1.5rem;
   }
 
   .column-half {

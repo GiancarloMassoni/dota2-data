@@ -21,6 +21,7 @@
         <div class="column-full">
           <h1 class="dota-data inline padding-top">Dota 2 Data</h1>
           <a href="#" class="profile inline padding-top">Profile</a>
+          <a href="#" class="matches inline padding-top">Recent Matches</a>
         </div>
       </div>
     </div>
@@ -46,6 +47,11 @@
       </form>
     </div>
     <div class="profile-view hidden" data-view="profile">
+      <div class="row text-center">
+        <div class="column-full">
+          <h1>Profile</h1>
+        </div>
+      </div>
       <div class="row text-center padding">
         <div class="column-half">
           <img src="" alt="" class="profile-img">
@@ -74,7 +80,20 @@
           </table>
         </div>
       </div>
-
+    </div>
+    <div class="match-view hidden" data-view="match-view">
+      <div class="row text-center">
+        <div class="column-full">
+          <h1>Recent Matches</h1>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="column-full matches-column">
+          <table class="table-matches">
+            <thead> <tr><th>Hero</th> <th></th><th>Result</th> <th>Type</th> <th>Duration</th> <th>K/D/A</th></tr> </thead>
+          </table>
+        </div>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>

@@ -5,7 +5,10 @@ var $profileView = document.querySelector('.profile-view');
 var $dotaData = document.querySelector('.dota-data');
 var $matchView = document.querySelector('.match-view');
 var $matches = document.querySelector('.matches');
+var $heroStats = document.querySelector('.heroes');
+var $heroView = document.querySelector('.hero-view');
 
+$heroStats.addEventListener('click', swapHeroView);
 $dotaData.addEventListener('click', swapHomeView);
 $profile.addEventListener('click', swapProfileView);
 $form.addEventListener('submit', idSubmit);
@@ -164,6 +167,7 @@ function swapHomeView(event) {
   $homeView.className = 'home-view';
   $profileView.className = 'profile-view hidden';
   $matchView.className = 'match-view hidden';
+  $heroView.className = 'hero-view hidden';
   data.view = 'home';
 }
 
@@ -171,6 +175,7 @@ function swapProfileView(event) {
   $homeView.className = 'home-view hidden';
   $profileView.className = 'profile-view';
   $matchView.className = 'match-view hidden';
+  $heroView.className = 'hero-view hidden';
   data.view = 'profile';
 }
 
@@ -178,7 +183,16 @@ function swapMatchView(event) {
   $homeView.className = 'home-view hidden';
   $profileView.className = 'profile-view hidden';
   $matchView.className = 'match-view';
+  $heroView.className = 'hero-view hidden';
   data.view = 'match';
+}
+
+function swapHeroView(event) {
+  $homeView.className = 'home-view hidden';
+  $profileView.className = 'profile-view hidden';
+  $matchView.className = 'match-view hidden';
+  $heroView.className = 'hero-view';
+  data.view = 'heroes';
 }
 
 var heroData = [

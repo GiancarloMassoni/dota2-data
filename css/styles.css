@@ -52,7 +52,8 @@ button:hover {
 }
 
 .table-profile,
-.table-matches {
+.table-matches,
+.table-heroes {
   color: white;
   padding-left: 10px;
   margin-left: auto;

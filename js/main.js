@@ -62,7 +62,7 @@ function getWinLosses(id) {
     var winPercent = wins / totalGames;
 
     var $winPercentRow = document.querySelector('.win-percentage-row');
-    $winPercentRow.textContent = 'Win Percentage: ' + winPercent.toFixed(2) * 100 + '%';
+    $winPercentRow.textContent = 'Win Rate: ' + winPercent.toFixed(2) * 100 + '%';
 
   });
   xhr.send();
@@ -77,15 +77,34 @@ function idSubmit(event) {
       $oldMatches[i].remove();
 
     }
+    var $heroStats = document.querySelectorAll('.heroes-row');
+    for (i = 0; i < $heroStats.length; i++) {
+      $heroStats[i].remove();
+    }
   }
   data.id = $form.elements.steamid.value;
   getSteamProfile(data.id);
   getWinLosses(data.id);
   getMatches(data.id);
+  getHeroStats(data.id);
   $homeView.className = 'home-view hidden';
   $profileView.className = 'profile-view';
   data.view = 'profile';
 
+}
+
+function getHeroStats(id) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://api.opendota.com/api/players/' + id + '/heroes');
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    var $table = document.querySelector('.table-heroes');
+    for (var i = 0; i < xhr.response.length; i++) {
+      var $newHeroRow = newHeroRow(xhr.response[i]);
+      $table.appendChild($newHeroRow);
+    }
+  });
+  xhr.send();
 }
 
 function getMatches(id) {
@@ -161,6 +180,57 @@ function newMatchRow(matchObject) {
   $kdaCol.textContent = matchObject.kills + '/' + matchObject.deaths + '/' + matchObject.assists;
   $tableRow.appendChild($kdaCol);
   return $tableRow;
+}
+
+function newHeroRow(heroObject) {
+
+  var $tableRow = document.createElement('tr');
+  $tableRow.className = 'heroes-row';
+
+  var $heroImgCol = document.createElement('td');
+  $tableRow.appendChild($heroImgCol);
+
+  var $heroImg = document.createElement('img');
+
+  var $heroCol = document.createElement('td');
+
+  for (var i = 0; i < heroData.length; i++) {
+    if (heroData[i].id === parseInt(heroObject.hero_id)) {
+      $heroImg.setAttribute('src', heroData[i].image);
+      $heroCol.textContent = heroData[i].name_loc;
+      break;
+    }
+  }
+  $heroImgCol.appendChild($heroImg);
+
+  $tableRow.appendChild($heroCol);
+
+  var $matchesCol = document.createElement('td');
+  $matchesCol.textContent = heroObject.games;
+  $tableRow.appendChild($matchesCol);
+
+  var $winsCol = document.createElement('td');
+  $winsCol.textContent = heroObject.win;
+  $tableRow.appendChild($winsCol);
+
+  var $loseCol = document.createElement('td');
+  var losses = heroObject.games - heroObject.win;
+  $loseCol.textContent = losses;
+  $tableRow.appendChild($loseCol);
+
+  var winPercent = heroObject.win / heroObject.games;
+  var $winPercentCol = document.createElement('td');
+
+  var newPercent = winPercent * 100;
+  if (isNaN(newPercent)) {
+    $winPercentCol.textContent = '0%';
+  } else {
+    $winPercentCol.textContent = Math.floor(newPercent) + '%';
+  }
+  $tableRow.appendChild($winPercentCol);
+
+  return $tableRow;
+
 }
 
 function swapHomeView(event) {
@@ -294,17 +364,17 @@ var heroData = [
   {
     id: 20,
     name_loc: 'Vengeful Spirit',
-    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/vengeful spirit.png'
+    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/vengefulspirit.png'
   },
   {
     id: 21,
     name_loc: 'Windranger',
-    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/windranger.png'
+    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/windrunner.png'
   },
   {
     id: 22,
     name_loc: 'Zeus',
-    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/zeus.png'
+    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/zuus.png'
   },
   {
     id: 23,
@@ -369,7 +439,7 @@ var heroData = [
   {
     id: 36,
     name_loc: 'Necrophos',
-    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/necrophos.png'
+    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/necrolyte.png'
   },
   {
     id: 37,
@@ -399,7 +469,7 @@ var heroData = [
   {
     id: 42,
     name_loc: 'Wraith King',
-    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/wraith_king.png'
+    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/skeleton_king.png'
   },
   {
     id: 43,
@@ -444,7 +514,7 @@ var heroData = [
   {
     id: 51,
     name_loc: 'Clockwerk',
-    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/clockwerk.png'
+    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/rattletrap.png'
   },
   {
     id: 52,
@@ -454,12 +524,12 @@ var heroData = [
   {
     id: 53,
     name_loc: "Nature's Prophet",
-    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/natures_prophet.png'
+    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/furion.png'
   },
   {
     id: 54,
     name_loc: 'Lifestealer',
-    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/lifestealer.png'
+    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/life_stealer.png'
   },
   {
     id: 55,
@@ -529,7 +599,7 @@ var heroData = [
   {
     id: 69,
     name_loc: 'Doom',
-    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/doom.png'
+    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/doom_bringer.png'
   },
   {
     id: 68,
@@ -569,7 +639,7 @@ var heroData = [
   {
     id: 76,
     name_loc: 'Outworld Destroyer',
-    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/outworld_destroyer.png'
+    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/obsidian_destroyer.png'
   },
   {
     id: 77,
@@ -604,7 +674,7 @@ var heroData = [
   {
     id: 83,
     name_loc: 'Treant Protector',
-    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/treant_protector.png'
+    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/treant.png'
   },
   {
     id: 84,
@@ -644,7 +714,7 @@ var heroData = [
   {
     id: 91,
     name_loc: 'Io',
-    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/io.png'
+    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/wisp.png'
   },
   {
     id: 92,
@@ -669,17 +739,17 @@ var heroData = [
   {
     id: 96,
     name_loc: 'Centaur Warrunner',
-    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/centaur_warrunner.png'
+    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/centaur.png'
   },
   {
     id: 97,
     name_loc: 'Magnus',
-    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/magnus.png'
+    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/magnataur.png'
   },
   {
     id: 98,
     name_loc: 'Timbersaw',
-    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/timbersaw.png'
+    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/shredder.png'
   },
   {
     id: 99,
@@ -754,7 +824,7 @@ var heroData = [
   {
     id: 108,
     name_loc: 'Underlord',
-    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/underlord.png'
+    image: 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/abyssal_underlord.png'
   },
   {
     id: 114,

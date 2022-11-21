@@ -87,6 +87,10 @@ button:hover {
   background-color: #353f49;
 }
 
+.table-heroes tr:nth-child(even) {
+  background-color: #353f49;
+}
+
 .padding-top {
   padding-top: 20px;
 }

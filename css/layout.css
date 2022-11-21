@@ -62,8 +62,4 @@ main {
   .column-half {
     flex-basis: 100%;
   }
-
-  .overlay {
-    height: 120%;
-  }
 }

@@ -1,5 +1,6 @@
 /* exported data */
 window.addEventListener('beforeunload', saveToLocalStorage);
+window.addEventListener('pagehide', saveToLocalStorage);
 
 var data = {
   view: 'home',

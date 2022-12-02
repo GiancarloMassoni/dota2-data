@@ -62,4 +62,12 @@ main {
   .column-half {
     flex-basis: 100%;
   }
+
+  h1 {
+    font-size: 15px;
+  }
+
+  a {
+    font-size: 2rem;
+  }
 }

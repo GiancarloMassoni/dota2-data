@@ -15,6 +15,15 @@ $form.addEventListener('submit', idSubmit);
 $matches.addEventListener('click', swapMatchView);
 
 data.id = null;
+var $tableMatchesDemo = document.querySelector('.matches-column');
+var $demoMatches = document.createElement('h1');
+$demoMatches.textContent = 'Enter Steam ID to view recent matches';
+$tableMatchesDemo.appendChild($demoMatches);
+
+var $heroStatsDemo = document.querySelector('.hero-stats-column');
+var $demoHeroStats = document.createElement('h1');
+$demoHeroStats.textContent = 'Enter Steam ID to view hero stats';
+$heroStatsDemo.appendChild($demoHeroStats);
 
 function getSteamProfile(id) {
 
@@ -70,7 +79,8 @@ function getWinLosses(id) {
 
 function idSubmit(event) {
   event.preventDefault();
-
+  $demoMatches.remove();
+  $demoHeroStats.remove();
   if (data.id !== null) {
     var $oldMatches = document.querySelectorAll('.matches-row');
     for (var i = 0; i < $oldMatches.length; i++) {
@@ -223,7 +233,7 @@ function newHeroRow(heroObject) {
 
   var newPercent = winPercent * 100;
   if (isNaN(newPercent)) {
-    $winPercentCol.textContent = '0%';
+    $winPercentCol.textContent = 'N/A';
   } else {
     $winPercentCol.textContent = Math.floor(newPercent) + '%';
   }

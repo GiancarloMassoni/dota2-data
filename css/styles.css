@@ -3,18 +3,23 @@
 }
 
 a {
-  font-size: 18px;
+  font-size: 1rem;
   text-decoration: none;
 }
 
 h1,
 a {
-  padding-right: 30px;
+  padding-right: 0.9rem;
   color: white;
   font-family: Cinzel, sans-serif;
 }
 
-h3 {
+.hover:hover {
+  color: #5f6d7a;
+}
+
+h3,
+h4 {
   color: white;
   font-family: Martel, sans-serif;
 }
@@ -109,4 +114,8 @@ tr img {
   margin: 1px;
   padding: 0;
   display: block;
+}
+
+.title {
+  font-size: 30px;
 }

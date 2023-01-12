@@ -20,7 +20,7 @@
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 70rem;
   margin: 0 auto;
   height: 650px;
 }
@@ -55,11 +55,14 @@ main {
 
 @media screen and (max-width: 768px) {
   main {
-    max-width: 575px;
-    margin: 0 auto;
+    max-width: 100%;
   }
 
   .column-half {
     flex-basis: 100%;
+  }
+
+  h1 {
+    font-size: 15px;
   }
 }

@@ -4,7 +4,7 @@ A web application for Dota 2 players who want to view their career statistics, m
 
 I created this project because Dota 2 is my favorite game and I wanted to make a way to view personal statistics for past matches played, total career stats and each individual character stats. I wanted any player to have a quick way to view these things and show off to their friends there stats.
 
-[Link to Dota 2 Data](https://giancarlomassoni.github.io/ajax-project/#)
+[Link to Dota 2 Data](https://giancarlomassoni.github.io/dota2-data/)
 
 # Technologies used
 * HTML

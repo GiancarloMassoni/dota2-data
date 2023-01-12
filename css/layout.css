@@ -55,8 +55,7 @@ main {
 
 @media screen and (max-width: 768px) {
   main {
-    max-width: 575px;
-    margin: 0 auto;
+    max-width: 100%;
   }
 
   .column-half {
@@ -65,9 +64,5 @@ main {
 
   h1 {
     font-size: 15px;
-  }
-
-  a {
-    font-size: 2rem;
   }
 }

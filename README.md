@@ -21,7 +21,7 @@ I created this project because Dota 2 is my favorite game and I wanted to make a
 * User can view recent matches and statistics of matches
 * Use can view all hero statistics
 
-
+# Preview
 ![Kapture 2023-01-12 at 13 55 02](https://user-images.githubusercontent.com/71737839/212190576-7d8cf842-d227-437d-8e1b-0cd4033d1af9.gif)
 ![Kapture 2023-01-12 at 14 05 19](https://user-images.githubusercontent.com/71737839/212191270-2980ea1e-3ec3-4f03-a881-6c4cbc375512.gif)
 

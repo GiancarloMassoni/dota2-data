@@ -56,17 +56,24 @@ button:hover {
   cursor: pointer;
 }
 
-.table-profile,
-.table-matches,
-.table-heroes {
+.table-profile {
   color: white;
-  padding-left: 10px;
-  margin-left: auto;
-  margin-right: auto;
   background-color: #161d24;
   width: 100%;
   margin-top: 10px;
-  font-size: 20px;
+  font-size: 1.5rem;
+  font-family: Cinzel, sans-serif;
+  border: 2px solid #353f49;
+  margin-bottom: 40px;
+}
+
+.table-matches,
+.table-heroes {
+  color: white;
+  background-color: #161d24;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 0.9rem;
   font-family: Cinzel, sans-serif;
   border: 2px solid #353f49;
   margin-bottom: 40px;
@@ -102,6 +109,7 @@ button:hover {
 
 img {
   padding: 10px;
+  object-fit: contain;
 }
 
 .dota-data:hover {
@@ -109,11 +117,11 @@ img {
 }
 
 tr img {
-  height: 60px;
+  height: 50px;
   width: 100%;
-  margin: 1px;
   padding: 0;
   display: block;
+  object-fit: contain;
 }
 
 .title {

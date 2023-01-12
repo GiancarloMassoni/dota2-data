@@ -29,5 +29,5 @@ I created this project because Dota 2 is my favorite game and I wanted to make a
 * User can compare profiles to others
 * User can view character profile
 
-# Instructions for repo installation
+# Getting Started
 * Must create a OpenDota API Account for API key.

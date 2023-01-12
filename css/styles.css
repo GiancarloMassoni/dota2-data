@@ -9,9 +9,13 @@ a {
 
 h1,
 a {
-  padding-right: 15px;
+  padding-right: 0.9rem;
   color: white;
   font-family: Cinzel, sans-serif;
+}
+
+.hover:hover {
+  color: #5f6d7a;
 }
 
 h3,

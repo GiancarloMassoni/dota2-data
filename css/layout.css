@@ -64,6 +64,20 @@ main {
   }
 
   .hover {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  main {
+    max-width: 100%;
+  }
+
+  .column-half {
+    flex-basis: 100%;
+  }
+
+  .hover {
+    font-size: 0.5rem;
   }
 }

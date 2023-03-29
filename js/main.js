@@ -7,7 +7,9 @@ var $matchView = document.querySelector('.match-view');
 var $matches = document.querySelector('.matches');
 var $heroStats = document.querySelector('.heroes');
 var $heroView = document.querySelector('.hero-view');
+var $demoBtn = document.querySelector('.demo-btn');
 
+$demoBtn.addEventListener('click');
 $heroStats.addEventListener('click', swapHeroView);
 $dotaData.addEventListener('click', swapHomeView);
 $profile.addEventListener('click', swapProfileView);

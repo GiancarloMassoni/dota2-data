@@ -39,7 +39,7 @@ h4 {
 .enter-btn {
   background-color: #161d24;
   border: #161d24;
-  margin: 20px;
+  margin-top: 20px;
   color: white;
   font-family: Martel, sans-serif;
   padding: 5px;
@@ -136,11 +136,10 @@ tr img {
 .demo-btn {
   background-color: #161d24;
   border: #161d24;
-  margin: 20px;
   color: white;
   font-family: Martel, sans-serif;
   padding: 5px;
-  width: 80px;
+  width: 110px;
   height: 30px;
   border-radius: 10px;
 }

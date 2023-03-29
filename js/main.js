@@ -9,7 +9,7 @@ var $heroStats = document.querySelector('.heroes');
 var $heroView = document.querySelector('.hero-view');
 var $demoBtn = document.querySelector('.demo-btn');
 
-$demoBtn.addEventListener('click');
+$demoBtn.addEventListener('click', demoBtn);
 $heroStats.addEventListener('click', swapHeroView);
 $dotaData.addEventListener('click', swapHomeView);
 $profile.addEventListener('click', swapProfileView);
@@ -26,6 +26,10 @@ var $heroStatsDemo = document.querySelector('.hero-stats-column');
 var $demoHeroStats = document.createElement('h1');
 $demoHeroStats.textContent = 'Enter Steam ID to view hero stats';
 $heroStatsDemo.appendChild($demoHeroStats);
+
+function demoBtn() {
+  $form.elements.steamid.value = '106866631';
+}
 
 function getSteamProfile(id) {
 
